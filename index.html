@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>emergent.fit</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <span>Home</span>
+    </div>
+
+    <div class="pill">Castro's Space</div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="pill small">⚡ Build Mode</div>
+      <h1>What will you build today?</h1>
+      <p class="subtitle">
+        Descreva o app que queres criar. Preview e export ficam prontos para a próxima fase.
+      </p>
+
+      <div class="composer">
+        <textarea id="prompt" class="textarea" placeholder="Build me a beautiful landing page for..."></textarea>
+
+        <div class="composerRow">
+          <div class="chips">
+            <span class="chip"><span class="k"></span> E-1</span>
+            <span class="chip">Ultra</span>
+            <span class="chip">AI Mode</span>
+          </div>
+
+          <div class="actions">
+            <button class="iconBtn" type="button" title="Configurações">⚙️</button>
+            <button class="iconBtn" type="button" title="Microfone">🎙️</button>
+            <button class="iconBtn primary" id="sendBtn" type="button" title="Enviar">➜</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick">
+        <button class="qbtn" data-fill="Clone Netflix" type="button">🎬 <span>Clone Netflix</span></button>
+        <button class="qbtn" data-fill="Task Manager" type="button">✅ <span>Task Manager</span></button>
+        <button class="qbtn" data-fill="Smart Course" type="button">📚 <span>Smart Course</span></button>
+        <button class="qbtn" data-fill="Surprise Me" type="button">✨ <span>Surprise Me</span></button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionHeader">
+        <div class="tabs">
+          <button class="tab active" data-tab="recent" type="button">📄 Recent Tasks</button>
+          <button class="tab" data-tab="deployed" type="button">🌐 Deployed Apps</button>
+        </div>
+
+        <button class="iconBtn" id="refreshBtn" title="Atualizar" type="button">⟳</button>
+      </div>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:180px;">ID</th>
+              <th>TASK</th>
+              <th style="width:170px;">LAST MODIFIED</th>
+              <th style="width:90px;"></th>
+            </tr>
+          </thead>
+
+          <tbody id="rows">
+            <tr>
+              <td class="id" data-label="ID">EMT - 4ad5bd</td>
+              <td data-label="Task">
+                <div class="taskTitle">app-migration-37</div>
+                <div class="taskSub">tenho uma app já feita quero exportar para cá</div>
+              </td>
+              <td class="muted" data-label="Last modified">1 day ago</td>
+              <td class="more"><button class="kebab" type="button">•••</button></td>
+            </tr>
+
+            <tr>
+              <td class="id" data-label="ID">EMT - 568a4a</td>
+              <td data-label="Task">
+                <div class="taskTitle">file-viewer-14</div>
+                <div class="taskSub">ve este arquivo</div>
+              </td>
+              <td class="muted" data-label="Last modified">1 day ago</td>
+              <td class="more"><button class="kebab" type="button">•••</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span class="muted2">emergent.fit</span>
+    </footer>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
