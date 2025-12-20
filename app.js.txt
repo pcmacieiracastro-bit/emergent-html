@@ -28,5 +28,3 @@ sendBtn.addEventListener("click", () => {
 refreshBtn.addEventListener("click", () => {
   alert("Aqui você atualizaria a lista de Tasks via API.");
 });
-
-
