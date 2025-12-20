@@ -1,0 +1,30 @@
+const promptEl = document.getElementById("prompt");
+const sendBtn = document.getElementById("sendBtn");
+const refreshBtn = document.getElementById("refreshBtn");
+
+document.querySelectorAll(".qbtn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const t = btn.getAttribute("data-fill");
+    promptEl.value = `Build a ${t} web app with a modern dark UI, preview, export zip, and domain setup instructions.`;
+    promptEl.focus();
+  });
+});
+
+document.querySelectorAll(".tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+    tab.classList.add("active");
+  });
+});
+
+sendBtn.addEventListener("click", () => {
+  if (!promptEl.value.trim()) {
+    alert("Escreve um pedido primeiro 🙂");
+    return;
+  }
+  alert("Nesta versão estática, o botão só simula. Depois ligamos ao backend.");
+});
+
+refreshBtn.addEventListener("click", () => {
+  alert("Aqui você atualizaria a lista de Tasks via API.");
+});
