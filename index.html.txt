@@ -3,13 +3,343 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Emergent.fit</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>emergent.fit</title>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <h1>Emergent.fit está online 🚀</h1>
-  <p>Se você está vendo isto, o deploy funcionou.</p>
+  <div class="noise" aria-hidden="true"></div>
 
-  <script src="app.js"></script>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <span>Home</span>
+    </div>
+
+    <div class="pill">Castro's Space</div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="pill small">⚡ Build Mode</div>
+      <h1>What will you build today?</h1>
+      <p class="subtitle">
+        Descreva o app que queres criar. Preview e export ficam prontos para a próxima fase.
+      </p>
+
+      <div class="composer">
+        <textarea id="prompt" class="textarea" placeholder="Build me a beautiful landing page for..."></textarea>
+
+        <div class="composerRow">
+          <div class="chips">
+            <span class="chip"><span class="k"></span> E-1</span>
+            <span class="chip">Ultra</span>
+            <span class="chip">AI Mode</span>
+          </div>
+
+          <div class="actions">
+            <button class="iconBtn" type="button" title="Configurações">⚙️</button>
+            <button class="iconBtn" type="button" title="Microfone">🎙️</button>
+            <button class="iconBtn primary" id="sendBtn" type="button" title="Enviar">➜</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick">
+        <button class="qbtn" data-fill="Clone Netflix" type="button">🎬 <span>Clone Netflix</span></button>
+        <button class="qbtn" data-fill="Task Manager" type="button">✅ <span>Task Manager</span></button>
+        <button class="qbtn" data-fill="Smart Course" type="button">📚 <span>Smart Course</span></button>
+        <button class="qbtn" data-fill="Surprise Me" type="button">✨ <span>Surprise Me</span></button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionHeader">
+        <div class="tabs">
+          <button class="tab active" data-tab="recent" type="button">📄 Recent Tasks</button>
+          <button class="tab" data-tab="deployed" type="button">🌐 Deployed Apps</button>
+        </div>
+
+        <button class="iconBtn" id="refreshBtn" title="Atualizar" type="button">⟳</button>
+      </div>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:180px;">ID</th>
+              <th>TASK</th>
+              <th style="width:170px;">LAST MODIFIED</th>
+              <th style="width:90px;"></th>
+            </tr>
+          </thead>
+
+          <tbody id="rows">
+            <tr>
+              <td class="id" data-label="ID">EMT - 4ad5bd</td>
+              <td data-label="Task">
+                <div class="taskTitle">app-migration-37</div>
+                <div class="taskSub">tenho uma app já feita quero exportar para cá</div>
+              </td>
+              <td class="muted" data-label="Last modified">1 day ago</td>
+              <td class="more"><button class="kebab" type="button">•••</button></td>
+            </tr>
+
+            <tr>
+              <td class="id" data-label="ID">EMT - 568a4a</td>
+              <td data-label="Task">
+                <div class="taskTitle">file-viewer-14</div>
+                <div class="taskSub">ve este arquivo</div>
+              </td>
+              <td class="muted" data-label="Last modified">1 day ago</td>
+              <td class="more"><button class="kebab" type="button">•••</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span class="muted2">emergent.fit</span>
+    </footer>
+  </main>
+
+  <script src="./app.js"></script>
 </body>
 </html>
+:root{
+  --bg:#070A0F;
+  --panel: rgba(255,255,255,.06);
+  --stroke: rgba(255,255,255,.10);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.58);
+  --muted2: rgba(255,255,255,.42);
+  --accent:#60a5fa;
+  --accent2:#a7f3d0;
+  --shadow: 0 20px 60px rgba(0,0,0,.55);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 800px at 50% 20%, rgba(96,165,250,.10), transparent 55%),
+    radial-gradient(900px 700px at 30% 15%, rgba(167,243,208,.08), transparent 55%),
+    radial-gradient(900px 700px at 70% 18%, rgba(139,92,246,.08), transparent 60%),
+    var(--bg);
+  overflow-x:hidden;
+}
+
+.noise{
+  position:fixed; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+  opacity:.18;
+  pointer-events:none;
+}
+
+.topbar{
+  max-width:1100px;
+  margin:0 auto;
+  padding:18px 20px 10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.brand{display:flex; align-items:center; gap:10px; color:var(--muted); font-size:14px;}
+.dot{
+  width:10px; height:10px; border-radius:999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 0 4px rgba(96,165,250,.10);
+}
+
+.wrap{max-width:1100px; margin:0 auto; padding:10px 20px 60px;}
+
+.pill{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:8px 12px;
+  border:1px solid var(--stroke);
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  border-radius:999px;
+  color:var(--muted);
+  font-size:13px;
+  backdrop-filter: blur(10px);
+}
+.pill.small{padding:6px 10px; font-size:12px;}
+
+.hero{text-align:center; padding:10px 0 8px;}
+.hero h1{
+  font-size:48px; line-height:1.05; letter-spacing:-0.03em;
+  margin:14px 0 12px;
+}
+.subtitle{margin:0 auto 18px; max-width:760px; color:var(--muted2); font-size:15px;}
+
+.composer{
+  margin:0 auto;
+  max-width:760px;
+  border:1px solid var(--stroke);
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  backdrop-filter: blur(14px);
+  padding:14px;
+}
+.textarea{
+  width:100%; border:0; outline:none; resize:none;
+  background:transparent; color:var(--text);
+  font-size:15px; line-height:1.4;
+  padding:6px 8px 10px;
+  min-height:70px;
+}
+.textarea::placeholder{color:rgba(255,255,255,.35)}
+.composerRow{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:8px;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+.chips{display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
+.chip{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:7px 10px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.15);
+  border-radius:999px;
+  color:rgba(255,255,255,.78);
+  font-size:12px;
+}
+.chip .k{
+  width:8px; height:8px; border-radius:999px;
+  background: rgba(167,243,208,.85);
+  box-shadow: 0 0 0 3px rgba(167,243,208,.12);
+}
+
+.actions{display:flex; gap:8px; align-items:center;}
+.iconBtn{
+  width:38px; height:38px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.20);
+  color:rgba(255,255,255,.85);
+  cursor:pointer;
+  display:grid; place-items:center;
+  transition:.15s transform, .15s background;
+}
+.iconBtn:hover{transform:translateY(-1px); background:rgba(255,255,255,.06)}
+.iconBtn.primary{
+  width:44px; height:38px;
+  border:1px solid rgba(96,165,250,.35);
+  background:linear-gradient(135deg, rgba(96,165,250,.18), rgba(167,243,208,.12));
+  box-shadow:0 10px 30px rgba(96,165,250,.12);
+}
+
+.quick{
+  display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+  margin:14px auto 38px;
+}
+.qbtn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03);
+  color:rgba(255,255,255,.78);
+  cursor:pointer;
+  transition:.15s transform,.15s background;
+}
+.qbtn:hover{transform:translateY(-1px); background:rgba(255,255,255,.06)}
+
+.section{
+  margin-top:28px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);
+  border-radius:18px;
+  overflow:hidden;
+}
+.sectionHeader{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 16px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.tabs{display:flex; gap:10px; align-items:center;}
+.tab{
+  border:1px solid transparent;
+  background:transparent;
+  color:rgba(255,255,255,.62);
+  padding:6px 10px;
+  border-radius:999px;
+  cursor:pointer;
+}
+.tab.active{
+  border-color:rgba(255,255,255,.12);
+  background:rgba(0,0,0,.20);
+  color:rgba(255,255,255,.86);
+}
+
+.tableWrap{width:100%; overflow:auto;}
+table{width:100%; border-collapse:collapse; font-size:13px;}
+thead th{
+  text-align:left; padding:12px 16px;
+  color:rgba(255,255,255,.45);
+  font-weight:600;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-size:11px;
+}
+tbody td{
+  padding:14px 16px;
+  border-top:1px solid rgba(255,255,255,.06);
+  color:rgba(255,255,255,.78);
+  vertical-align:top;
+}
+.id{color:rgba(255,255,255,.55); font-family: ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;}
+.taskTitle{font-weight:650; color:rgba(255,255,255,.90)}
+.taskSub{color:rgba(255,255,255,.45); margin-top:4px; max-width:520px}
+.more{text-align:right}
+.kebab{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.20);
+  color:rgba(255,255,255,.80);
+  border-radius:10px;
+  padding:6px 10px;
+  cursor:pointer;
+}
+
+.muted{color:rgba(255,255,255,.55)}
+.muted2{color:rgba(255,255,255,.45)}
+.footer{margin-top:16px; text-align:center}
+
+const promptEl = document.getElementById("prompt");
+const sendBtn = document.getElementById("sendBtn");
+const refreshBtn = document.getElementById("refreshBtn");
+
+document.querySelectorAll(".qbtn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const t = btn.getAttribute("data-fill");
+    promptEl.value = `Build a ${t} web app with a modern dark UI, preview, export zip, and domain setup instructions.`;
+    promptEl.focus();
+  });
+});
+
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+  });
+});
+
+sendBtn.addEventListener("click", () => {
+  if (!promptEl.value.trim()) {
+    alert("Escreve um pedido primeiro 🙂");
+    return;
+  }
+  alert("Nesta versão estática, o botão só simula. Depois ligamos ao backend.");
+});
+
+refreshBtn.addEventListener("click", () => {
+  alert("Aqui você atualizaria a lista de Tasks via API.");
+});
